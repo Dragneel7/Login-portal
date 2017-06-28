@@ -7,6 +7,13 @@ from .forms import UserDetailsForm
 
 # Create your views here.
 
+def instruction(request):
+	return render(request,'login_app/instruction.html',{})
+	
+
+def home(request):
+	return render(request,'login_app/login.html',{})
+
 def get_user(request,pk):
 	user = get_object_or_404(UserDetails,pk=pk)
 	
