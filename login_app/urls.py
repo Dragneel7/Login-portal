@@ -7,4 +7,5 @@ urlpatterns = [
 	url(r'^(?P<pk>\d+)/$',views.get_user, name='get_user'),
 	url(r'^instructions/$',views.instruction,name='instruction'),
 	url(r'^home/$',views.home, name='home'),
+	url(r'^game/$',views.game, name='game'),
 ]

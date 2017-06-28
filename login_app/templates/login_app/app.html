@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app='ngSnake'>
+
+  <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login_app/app.css' %}"/>
+  </head> 
+
+  <body ng-controller="snakeCtrl">
+
+    <div id="gameContainer">
+      
+     <table>
+          <tr class="row" ng-repeat="column in board">
+              <td class="column"
+                  ng-style="{'background-color': setStyling($parent.$index, $index,player)}"
+                  ng-repeat="row in column track by $index" ng-click="make_active($parent.$index,$index)"
+              ><p>{{value($parent.$index,$index)}}</p></td>
+          </tr>
+    </table>
+    <h2> Player Turn : {{player === 1 ? 'Player1' : 'Player2'}}</h2>
+
+          <div class="score">
+            Score of Player1 : {{score_player1}}
+            <br>
+            Score of Player2 : {{score_player2}}
+            <br>
+
+          </div>
+          <button ng-click="endGame()">End Game</button>
+
+      <div class="words">
+      <h3>PROBABLE WORDS FORMED</h3>
+
+       <p style="color:red;"> {{word}}</p>
+        <br>
+        <br>
+       <p style="color:blue;"> {{word1}}</p>
+	
+  
+	 
+      </div>
+    </div>
+      
+      
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js">
+</script>
+    <script src="app1.js"></script> -->
+  </body>
+
+</html>
+
