@@ -10,3 +10,8 @@ class UserDetails(models.Model):
 
 	def __unicode__(self):
 		return self.user_name
+
+class UserStats(models.Model):
+	user_stat = models.ForeignKey(UserDetails)	
+	
+	
