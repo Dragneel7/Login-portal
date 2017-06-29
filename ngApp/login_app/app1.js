@@ -1,12 +1,6 @@
-var app = angular.module('ngSnake', [])
+angular.module('ngSnake', [])
 
-  
-app.config(function($interpolateProvider){
-      $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-  });
- 
-
-app.controller('snakeCtrl', function($scope,$http) {
+  .controller('snakeCtrl', function($scope,$http) {
     var BOARD_SIZE = 18;
 
       $scope.score_player1=0;
