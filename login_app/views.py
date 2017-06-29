@@ -16,7 +16,7 @@ def instruction(request):
 
 def home(request):
 	
-	return redirect('login_app:get_user',pk=1)
+	return render(request,'login_app/home.html',{})
 
 def get_user(request,pk):
 	user = get_object_or_404(UserDetails,pk=pk)
