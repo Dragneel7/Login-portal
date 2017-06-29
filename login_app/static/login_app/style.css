@@ -1,0 +1,18 @@
+h1.heading{
+	font-size:40px;
+	margin-left:20%;
+	position:absolute;
+}
+
+form.post-form{
+	margin-left:40%;
+	position:absolute;
+	top:300px;
+	font-weight:bolder;
+
+}
+h2.login{
+	position:absolute;
+	top:200px;
+	left:40%;
+}
