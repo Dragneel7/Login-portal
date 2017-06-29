@@ -3,10 +3,14 @@
         <title>
                 WordBuilding
         </title>
+	 {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login_app/home.css' %}"/>
+  
+
 </head>
 <body>
-
-<h2>
+<div id = "content">
+<h2 id = "head">
 Let's test our vocablary ...
 </h2>
 
@@ -15,10 +19,10 @@ Let's test our vocablary ...
         <a href="{% url 'login_app:instruction' %}"><li>Rules</li></a>
         <a href="#"><li>Your Stats</li></a>
 </ul>
-<h4>
+<h4 id = "footer">
         Made By : Surya Saini
 </h4>
-
+</div>
 </body>
 </html>
 
