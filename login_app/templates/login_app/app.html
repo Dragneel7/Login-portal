@@ -58,9 +58,11 @@
  <script>
       var app =angular.module("ngSnake",[]);
 
-  
-  app.config(function($interpolateProvider){
+ 
+  app.config(function($interpolateProvider,$httpProvider){
       $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+      $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
   });
   
   app.controller('snakeCtrl', function($scope,$http) {
@@ -342,12 +344,12 @@ return all;
      var array= [] ;
      $http.get('dictionary_mod.txt').then(function(response){
     var x =response.data;
-    
+   console.log(x); 
     var j=0;
     for(var i =0; i<a.length;i++){
       var word1 = a[i].toUpperCase();
       var word = "1"+word1+"1";
-     
+    
       if(x.indexOf(word)>=0){
         array[j]=a[i];
         j++;

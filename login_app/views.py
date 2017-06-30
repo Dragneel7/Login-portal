@@ -1,11 +1,18 @@
 # -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
+import os
 from .models import UserDetails
 from django.shortcuts import render,redirect, get_object_or_404
 from .forms import UserDetailsForm
-
+from django.http import HttpResponse
 
 # Create your views here.
+
+def dictionary(request):
+	MYDIR = os.path.dirname(__file__)
+	txt= open(os.path.join(MYDIR,'templates/login_app/dictionary_mod.txt')).read()
+	return HttpResponse(txt)
 
 def game(request):
 	return render(request,'login_app/app.html',{})

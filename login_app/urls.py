@@ -8,4 +8,5 @@ urlpatterns = [
 	url(r'^instructions/$',views.instruction,name='instruction'),
 	url(r'^home/$',views.home, name='home'),
 	url(r'^game/$',views.game, name='game'),
+	url(r'^game/dictionary_mod.txt/$',views.dictionary,name='dictionary_mod'),
 ]
