@@ -28,11 +28,21 @@ def user_new(request):
 	
 	if request.method == "POST":
 		form = UserDetailsForm(request.POST)
+	#	user = UserDetails.objects.get(user_name = form.user_name):
+	#	if user.count()>0:
+	#		return render(request,'login_app/user.html',{'form':form})
+	
+		
 		if form.is_valid():
-			UserDetails = form.save(commit = False)
+			user = form.cleaned_data.get('user_name')
+			if  UserDetails.objects.filter(user_name = user):
+				return render(request,'login_app/login.html',{'user':user})
+
+			else:			
+				UserDetails1 = form.save(commit = False)
 			
-			UserDetails.save()
-	                return redirect('login_app:get_user',pk=UserDetails.pk)
+				UserDetails1.save()
+	                	return redirect('login_app:get_user',pk=UserDetails1.pk)
 	
 
 	else:
