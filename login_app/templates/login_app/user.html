@@ -6,11 +6,14 @@
 
 	{% load staticfiles %}
 	<link rel = "stylesheet" type="text/css" href="{% static 'login_app/style.css' %}" />
+	
 </head>
 <body>
 <h1 class = "heading" >
 	WordBuilding
 </h1>
+<h3 id = "alert1"></h3>
+<script>document.getElementById('alert1').innerHTML ="{{alert}}";</script>
 <h2 class = "login" >
 	Login To Play
 </h2>

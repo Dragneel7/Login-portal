@@ -35,9 +35,12 @@ def user_new(request):
 		
 		if form.is_valid():
 			user = form.cleaned_data.get('user_name')
-			if  UserDetails.objects.filter(user_name = user):
+			pas1 = form.cleaned_data.get('user_password') 
+			if  UserDetails.objects.filter(user_name = user,user_password=pas1):
 				return render(request,'login_app/login.html',{'user':user})
-
+			elif UserDetails.objects.filter(user_name = user) and not(UserDetails.objects.filter(user_password=pas1)):	
+				alert = "username taken"
+				return render(request,'login_app/user.html',{'form':form,'alert':alert})	
 			else:			
 				UserDetails1 = form.save(commit = False)
 			
@@ -47,6 +50,7 @@ def user_new(request):
 
 	else:
 		form = UserDetailsForm()
-		return render(request,'login_app/user.html',{'form':form})
+		alert = "incorrect format"
+		return render(request,'login_app/user.html',{'form':form,'alert':alert})
 
 
