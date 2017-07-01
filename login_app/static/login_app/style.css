@@ -1,3 +1,9 @@
+body{
+	
+	color:white;
+	background-size:100vw 100vh;
+	background-position:center;
+}
 h1.heading{
 	font-size:40px;
 	margin-left:20%;
@@ -16,3 +22,4 @@ h2.login{
 	top:200px;
 	left:40%;
 }
+
