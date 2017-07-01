@@ -1,21 +1,32 @@
 
-dy{
-        background-color:#fafafa;
+body{
+        background-color:lightblue;
         font-family:apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      
-
+      	margin:0;
+      	padding:0
 }
-
+   ::-webkit-scrollbar { 
+    display: none; 
+	 }
+div.page1{
+	width: 100vw;
+	height: 100vh;
+	background-attachment: fixed;
+	z-index: -2;
+	color:white;
+	background-image: url('back.gif');
+	background-position: center;
+	size:100vw 100vh;
+}
 div#content{
 	width: 40%;
-	
 	
 	text-align: center;
 	margin: auto;
         
 }
 
-ul{
+ul#links{
         list-style:none;
        
         position: absolute;
@@ -26,7 +37,7 @@ ul{
 
 a{
         text-decoration:none;
-        color:black;
+        color:white;
 }
 
 h2#head{
@@ -42,12 +53,59 @@ h4#footer{
 	top:90vh;
 	margin-left:12%;
 	}
-li {
+ul#links li {
 	padding: 30px;
 	font-size: 20px;
 
 }
-li:hover{
+div.page1 li:hover{
 	font-size: 25px;
 	color:lightblue;
 }
+div.page2{
+	position: relative;
+	
+	width: 100vw;
+	height: 100vh;
+	background-image: url('back2.gif');
+	background-size: 100vw 100vh;
+	background-position: center;
+
+}
+ul#list_main{
+	font-size: 20px;
+	color:white	;
+}
+body{
+        margin:0;
+        padding:0;
+}
+h2#heading{
+        font-size:30px;
+        color:seagreen;
+        margin-left:30%;
+        position:absolute;
+        top:20px;
+
+}
+ul#list_main{
+        list-style:none;
+
+        position:absolute;
+        top:140px;
+        margin-left:15%;
+}
+a#back{
+	color:grey;
+	margin-left: 85%;
+	position: absolute;
+	top:600px;
+	cursor: pointer;
+}
+h3{
+	color:white;
+	margin-left: 40%;
+	position: absolute;
+	top:400px;
+}
+

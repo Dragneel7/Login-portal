@@ -3,12 +3,16 @@
         <title>
                 WordBuilding
         </title>
+     {% load staticfiles %}
+        <link rel = "stylesheet" type="text/css" href="{% static 'login_app/instruction.css' %}" />
+
+	
 </head>
 <body>
-        <h2>
+        <h2 id ="heading">
                 Instructions to Play WordBuilding:-
         </h2>
-        <ul>
+        <ul id = "list_main">
                 <li>Word Building is a game testing players vocabulary and analysis skills</li>
                 <li>The game is played by 2 players where they compete against again each other and try to maximize their scores.</li>
                 <li>The game start with each player entering a letter in the board grid alternatively</li>
