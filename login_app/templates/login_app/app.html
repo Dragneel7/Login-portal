@@ -192,7 +192,7 @@
 
 
     $scope.make_active = function(col,row){
-     
+	if($scope.board[col][row]===false){     
       $scope.board[col][row]=prompt("enter a letter");
       
       var word_vertical =[];
@@ -292,7 +292,10 @@
 
    $scope.player = $scope.player ===Player1 ? Player2 : Player1;
       value();
-     
+     }
+else{
+alert("block already filled");
+}
 
     }
     

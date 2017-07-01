@@ -10,13 +10,8 @@ class UserDetails(models.Model):
 
 	def __unicode__(self):
 		return self.user_name
+	
 
 class UserStats(models.Model):
-	user = models.ForeignKey(UserDetails)
-	user_stat = models.CharField(max_length=200)	
-
-	def __init__(self,user_stat=None,*args,**kwargs):
-		self.user_stat = user_stat or self.user_stat
-	
-	def __unicode__(self):
-		return self.user_stat	
+	userdetails = models.ForeignKey(UserDetails,default='north')
+	user_stat = models.CharField(max_length=200)
