@@ -57,7 +57,7 @@ def user_new(request):
 
 	else:
 		form = UserDetailsForm()
-		alert = "incorrect format"
-		return render(request,'login_app/user.html',{'form':form,'alert':alert})
+	
+		return render(request,'login_app/user.html',{'form':form})
 
 
