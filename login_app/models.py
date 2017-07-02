@@ -13,5 +13,5 @@ class UserDetails(models.Model):
 	
 
 class UserStats(models.Model):
-	userdetails = models.ForeignKey(UserDetails,default='north')
+	userdetails = models.ForeignKey(UserDetails)
 	user_stat = models.CharField(max_length=200)

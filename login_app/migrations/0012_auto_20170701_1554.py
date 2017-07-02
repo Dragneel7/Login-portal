@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='userstats',
             name='userdetails',
-            field=models.ForeignKey(default=b'north', on_delete=django.db.models.deletion.CASCADE, to='login_app.UserDetails'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='login_app.UserDetails'),
         ),
         migrations.AlterField(
             model_name='userdetails',

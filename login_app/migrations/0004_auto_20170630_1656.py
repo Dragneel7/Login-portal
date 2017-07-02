@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='userstats',
             name='userdetails',
-            field=models.ForeignKey(default='null', to='login_app.UserDetails'),
+            field=models.ForeignKey(default=1, to='login_app.UserDetails'),
             preserve_default=False,
         ),
         migrations.AlterField(
