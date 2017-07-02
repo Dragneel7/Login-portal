@@ -6,6 +6,9 @@ from .models import UserDetails
 from django.shortcuts import render,redirect, get_object_or_404
 from .forms import UserDetailsForm
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+
+
 
 # Create your views here.
 
@@ -20,9 +23,12 @@ def game(request):
 def instruction(request):
 	return render(request,'login_app/instruction.html',{})
 	
-
+@login_required
 def home(request):
 	
+	return render(request,'login_app/home.html',{})
+
+def github_login(request):
 	return render(request,'login_app/home.html',{})
 
 def get_user(request,pk):

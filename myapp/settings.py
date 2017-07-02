@@ -51,6 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 )
 
 ROOT_URLCONF = 'myapp.urls'
@@ -66,10 +67,25 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+		'social_django.context_processors.backends',
+		'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+	'social_core.backends.facebook.FacebookOAuth2',
+	'social_core.backends.github.GithubOAuth2',
+	'django.contrib.auth.backends.ModelBackend',	
+
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '313905479068863'
+SOCIAL_AUTH_FACEBOOK_SECRET ='d497cbf3343cdc031bb34bbf3726eaf5' 
+SOCIAL_AUTH_GITHUB_KEY = 'd1f557422c3d4b85c261'
+SOCIAL_AUTH_GITHUB_SECRET = '1c4318d1830e3d45e502687ceb3f68c6b0c889f3'
+
 
 WSGI_APPLICATION = 'myapp.wsgi.application'
 

@@ -23,8 +23,14 @@
 	
 		<button type="submit">Log In </button>
 	</form>
-{% endblock %}
+<br>
+<h4>or</h4>
 
+<a href = "{% url 'social:begin' 'facebook' %}">Login via Facebook</a>
+<a href = "{% url 'social:begin' 'github' %}">Login via github</a>
+
+
+{% endblock %} 
 
 </body>
 </html>
