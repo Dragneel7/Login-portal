@@ -17,20 +17,9 @@ def dictionary(request):
 	txt= open(os.path.join(MYDIR,'templates/login_app/dictionary_mod.txt')).read()
 	return HttpResponse(txt)
 
-def game(request):
-	return render(request,'login_app/app.html',{})
-
-def instruction(request):
-	return render(request,'login_app/instruction.html',{})
+#def instruction(request):
+#	return render(request,'login_app/instruction.html',{})
 	
-@login_required
-def home(request):
-	
-	return render(request,'login_app/home.html',{})
-
-def github_login(request):
-	return render(request,'login_app/home.html',{})
-
 def get_user(request,pk):
 	user = get_object_or_404(UserDetails,pk=pk)
 	
@@ -49,14 +38,17 @@ def user_new(request):
 		if form.is_valid():
 			user = form.cleaned_data.get('user_name')
 			pas1 = form.cleaned_data.get('user_password') 
+			request.session['username'] = user
+
 			if  UserDetails.objects.filter(user_name = user,user_password=pas1):
-				return render(request,'login_app/login.html',{'user':user})
+			
+				return render(request,'login_app/login.html',{'user':request.session['username']})
 			elif UserDetails.objects.filter(user_name = user) and not(UserDetails.objects.filter(user_password=pas1)):	
 				alert = "username taken"
 				return render(request,'login_app/user.html',{'form':form,'alert':alert})	
 			else:			
 				UserDetails1 = form.save(commit = False)
-			
+			        
 				UserDetails1.save()
 	                	return redirect('login_app:get_user',pk=UserDetails1.pk)
 	
@@ -65,5 +57,17 @@ def user_new(request):
 		form = UserDetailsForm()
 	
 		return render(request,'login_app/user.html',{'form':form})
+
+@login_required
+def home(request):
+        user = request.session['username']	
+	return render(request,'login_app/home.html',{'user':user})
+
+def github_login(request):
+	return render(request,'login_app/home.html',{})
+
+def game(request):
+	user = request.session['username']
+	return render(request,'login_app/app.html',{'user':user})
 
 
