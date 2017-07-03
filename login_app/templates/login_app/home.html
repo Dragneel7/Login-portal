@@ -65,6 +65,22 @@ Let's test our vocablary ...
 	        scrollTop: $(".page1").offset().top},
 	        'slow');
 	});
+ $('body').bind('mousewheel', function(e){
+     if(e.originalEvent.wheelDelta < 0) {
+         $('html,body').animate({
+                scrollTop: $(".page2").offset().top},
+                'slow');
+
+     }else {
+         $('html,body').animate({
+                scrollTop: $(".page1").offset().top},
+                'slow');
+
+     }
+
+     //prevent page fom scrolling
+     return false;
+ });
 </script>
 </body>
 </html>
