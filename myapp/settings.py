@@ -77,6 +77,7 @@ TEMPLATES = [
 AUTHENTICATION_BACKENDS = (
 	'social_core.backends.facebook.FacebookOAuth2',
 	'social_core.backends.github.GithubOAuth2',
+	'social_core.backends.google.GoogleOAuth2',
 	'django.contrib.auth.backends.ModelBackend',	
 
 )
@@ -85,7 +86,8 @@ SOCIAL_AUTH_FACEBOOK_KEY = '313905479068863'
 SOCIAL_AUTH_FACEBOOK_SECRET ='d497cbf3343cdc031bb34bbf3726eaf5' 
 SOCIAL_AUTH_GITHUB_KEY = 'd1f557422c3d4b85c261'
 SOCIAL_AUTH_GITHUB_SECRET = '1c4318d1830e3d45e502687ceb3f68c6b0c889f3'
-
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='145870270746-b2jat9npo3crsi6p7fmeidu232omn6i5.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET ='7EyjU44DLZDAUC6ktsTYg2og'
 
 WSGI_APPLICATION = 'myapp.wsgi.application'
 
