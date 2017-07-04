@@ -91,6 +91,8 @@ def game(request):
 			
 def add(request):
 	stat = request.GET.get('text')
-	e = UserStats(user_stat=stat)
-	e.save()
+	q = UserDetails.objects.get(user_name = request.session['username'])
+	q.userstats_set.create(user_stat=stat)
+#	e = UserStats(user_stat=stat)
+#	e.save()
 	return HttpResponse('done')		
