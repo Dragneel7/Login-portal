@@ -95,4 +95,11 @@ def add(request):
 	q.userstats_set.create(user_stat=stat)
 #	e = UserStats(user_stat=stat)
 #	e.save()
-	return HttpResponse('done')		
+	return HttpResponse('done')	
+
+def stats(request):
+	q = UserDetails.objects.get(user_name = request.session['username'])
+	stats = q.userstats_set.all().order_by('-id')
+	return render(request,'login_app/stats.html',{'stats':stats})
+
+	

@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>
+WordBuilding
+</title>
+{% load	static %}
+<link rel="stylesheet" type="text/css" href="{% static 'login_app/stats.css' %}"/>
+</head>
+<body style="background-image: url('{% static "login_app/back_stat.jpg"%}')";>
+
+{% if stats %}
+<ul id ="stat">
+	{% for stat in stats %}
+	<li> {{stat}}</li>
+	{% endfor %}
+</ul>
+{% else %}
+	<p> No stats available </p>
+{% endif %}
+<br>
+<a href = "{% url 'login_app:home' %}">back</a>
+</body>
+</html>

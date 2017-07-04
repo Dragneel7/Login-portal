@@ -1,0 +1,35 @@
+	::-webkit-scrollbar { 
+    display: none; 
+	 }
+body{
+	margin:0;
+	padding:0;
+	color:white;
+}
+
+ul#stat{
+	width:30%;
+	overflow-y:scroll;
+	height:600px;
+	margin-left:35%;
+	margin-top:20px;
+	list-style-type:none;
+	border:1px solid white;
+	
+}
+li{
+	
+	font-size:20px;
+	padding:10px;
+}
+a{
+text-decoration:none;
+position:absolute;
+top:500px;
+left:85%;
+font-size:20px;
+color:white;
+}
+a:hover{
+	font-size:30px;
+}
