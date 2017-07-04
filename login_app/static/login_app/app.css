@@ -1,4 +1,6 @@
-
+input#input{
+	display:none;
+}
 #gameContainer, #pastScores {
 	width: 545px;
 	height: 580px;
