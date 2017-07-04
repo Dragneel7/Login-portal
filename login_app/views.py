@@ -9,6 +9,8 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.contrib import auth
+#from allauth.account.signals import user_signed_up
+#from django.dispatch import reciever
 # Create your views here.
 
 def dictionary(request):
@@ -72,38 +74,21 @@ def home(request):
         user = request.session['username']	
 	return render(request,'login_app/home.html',{'user':user})
 
+#@reciever(user_signed_up)
 def github_login(request):
-        user1 = RequestContext(request,
-                           {'user': request.user})
-	if request.user.is_authenticated():
-		user1.update({
-				'username':request.user.username
-				})
-        return render_to_response('login_app/home.html',
-        	                      context_instance=user1)
-
-#	return render(request,'login_app/home.html',{})
+	user = request.user.first_name
+	request.session['username'] = user
+	return render(request,'login_app/home.html',{'user':request.session['username']})
 
 def game(request):
 	user = request.session['username']
 	return render(request,'login_app/app.html',{'user':user})
 
-#def userstat(request):
-#	if request.method == 'POST':
-#		user = UserDetails.objects.get(user_name=request.session['username'])
-	
-#		form = UserStatsform(request.post)
-#		if form.is_valid():
-#			userstat = form.save(commit = False)
-			
-#			userstat.save()
-			
+		
 def add(request):
 	stat = request.GET.get('text')
 	q = UserDetails.objects.get(user_name = request.session['username'])
 	q.userstats_set.create(user_stat=stat)
-#	e = UserStats(user_stat=stat)
-#	e.save()
 	return HttpResponse('done')	
 
 def stats(request):
