@@ -19,10 +19,10 @@ def dictionary(request):
 #def instruction(request):
 #	return render(request,'login_app/instruction.html',{})
 	
-def get_user(request,pk):
-	user = get_object_or_404(UserDetails,pk=pk)
+#def get_user(request,pk):
+#	user = get_object_or_404(UserDetails,pk=pk)
 	
-	return render(request,'login_app/login.html',{'user':user})
+#	return render(request,'login_app/login.html',{'user':user})
 
 
 def user_new(request):
@@ -50,7 +50,7 @@ def user_new(request):
 			        
 				UserDetails1.save()
 				
-	                	return redirect('login_app:get_user',pk=UserDetails1.pk)
+	                	return render(request,'login_app/home.html',{'user':request.session['username']})
 	
 
 	else:
