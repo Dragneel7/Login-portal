@@ -53,23 +53,7 @@
 
 </div>
     </div>
-<script>
-$("#input").bind("keypress", function(e) {
-
-    //enter key pressed
-    if (e.keyCode == 13) {
-
-        var text = $("#input").val();
-
-        var args = {'text': text};
-
-        $.get("/add/", args).done(function(data) {
-            console.log("message: " + data);
-        });
-    }
-
-}) ;
-</script>     
+    
     
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js">
 </script>
@@ -403,26 +387,54 @@ return all;
      
 
   $scope.endGame = function(){
-   
+ 	var x = document.getElementById('p1').innerHTML;
+	var y = document.getElementById('p2').innerHTML;
+	var s1 = $scope.score_player1;
+	var s2 = $scope.score_player2;
+  
     if($scope.score_player1>$scope.score_player2){
-      alert("player1 wins the game");
-    }
+//      alert("player1 wins the game");
+	var score = s1-s2;
+      document.getElementById('input').value = x +" won from "+y+" by "+score +" points."  ;
+    } 
     else if($scope.score_player2>$scope.score_player1){
-      alert("player2 wins the game");
-    }
+       var score = s2-s1;
+	document.getElementById('input').value = x +" lost to " +y+ " by "+score+ " points.";
+     }
     else{
-      alert("game is a draw");
+      document.getElementById('input').value = "game between "+x +" and " +y+" was a draw.";
     }
+var text = $("#input").val();
 
-     // location.reload();
+        var args = {'text': text};
+
+        $.get("/add/", args).done(function(data) {
+            console.log("message: " + data);
+        });
+         // location.reload();
     window.location.href = '{% url 'login_app:home' %}';
   }
 
   });
 
     </script>
+<!--<script>
+$("button").click( function() {
 
-  </body>
+    //enter key pressed
+    
+
+        var text = $("#input").val();
+
+        var args = {'text': text};
+
+        $.get("/add/", args).done(function(data) {
+            console.log("message: " + data);
+        });
+    
+
+}) ;
+</script>-->   </body>
 
 </html>
 
