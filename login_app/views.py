@@ -8,7 +8,7 @@ from .forms import UserDetailsForm,UserStats
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-
+from django.contrib import auth
 # Create your views here.
 
 def dictionary(request):
@@ -58,7 +58,15 @@ def user_new(request):
 	
 		return render(request,'login_app/user.html',{'form':form})
 
+
 @login_required
+
+def logout(request):
+	auth.logout(request)
+	return render(request,'login_app/user.html',{})
+
+
+
 def home(request):
         user = request.session['username']	
 	return render(request,'login_app/home.html',{'user':user})
@@ -102,4 +110,4 @@ def stats(request):
 	stats = q.userstats_set.all().order_by('-id')
 	return render(request,'login_app/stats.html',{'stats':stats})
 
-	
+

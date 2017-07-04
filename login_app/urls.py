@@ -13,4 +13,5 @@ urlpatterns = [
 	url(r'^game/dictionary_mod.txt/$',views.dictionary,name='dictionary_mod'),
 	url(r'^accounts/profile/$',views.github_login,name='github_login'),
 	url(r'^stats/$',views.stats, name='stats'),
+	url(r'^$',views.logout, name='logout'),
 ]
