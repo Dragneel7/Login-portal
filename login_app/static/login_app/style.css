@@ -26,3 +26,12 @@ a{
 	text-decoration:none;
 	color:white;
 }
+div#extra{
+	margin-left:45%;
+	position:absolute;
+	top:430px;
+}
+h3{
+	margin-left:40%;
+	font-size:40px;
+}	

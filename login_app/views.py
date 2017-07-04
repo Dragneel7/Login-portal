@@ -63,6 +63,7 @@ def user_new(request):
 
 def logout(request):
 	auth.logout(request)
+
 	return render(request,'login_app/user.html',{})
 
 
