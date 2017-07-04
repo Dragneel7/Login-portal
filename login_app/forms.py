@@ -1,6 +1,7 @@
 
 from django import forms
-from .models import UserDetails
+from .models import UserDetails ,UserStats
+#from django.forms import formset_factory
 
 class UserDetailsForm(forms.ModelForm):
 #	user_password = forms.CharField(widget=forms.PasswordInput)
@@ -17,3 +18,10 @@ class UserDetailsForm(forms.ModelForm):
 #		widgets = {
 #			'user_password':forms.PasswordInput(),
 	#	}
+
+#UserStatsFormset =formset_factory(UserDetails,UserStats,
+#	)
+#class UserStatsForm(forms.ModelForm):
+#	class Meta:
+#		model=UserStats
+#		fields = ('user_stat',)

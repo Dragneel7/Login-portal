@@ -6,7 +6,7 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'login_app/app.css' %}"/>
   
-    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
   </head> 
 
   <body ng-controller="snakeCtrl">
@@ -48,10 +48,29 @@
 	
   
 	 
-      </div>
+      <p>message: {{ text }}</p>  
+<input type="text" name="word" value="" id="input"/>
+
+</div>
     </div>
-      
-      
+<script>
+$("#input").bind("keypress", function(e) {
+
+    //enter key pressed
+    if (e.keyCode == 13) {
+
+        var text = $("#input").val();
+
+        var args = {'text': text};
+
+        $.get("/add/", args).done(function(data) {
+            console.log("message: " + data);
+        });
+    }
+
+}) ;
+</script>     
+    
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js">
 </script>
    <!-- <script src="app1.js"></script> -->

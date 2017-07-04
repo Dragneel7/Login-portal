@@ -2,8 +2,8 @@ from django.contrib import admin
 from .models import UserDetails,UserStats
 # Register your models here.
 
-class UserStatsInline(admin.StackedInline):
-	model = UserStats
+##class UserStatsInline(admin.StackedInline):
+#	model = UserStats
 
 
 class UserDetailsAdmin(admin.ModelAdmin):
@@ -12,7 +12,7 @@ class UserDetailsAdmin(admin.ModelAdmin):
 	('Password',     {'fields' : ['user_password'],'classes':['collapse']}),
 	]
 	
-	inlines = [UserStatsInline]
+#	inlines = [UserStatsInline]
 
 admin.site.register(UserDetails,UserDetailsAdmin)
-#admin.site.register(UserStats)
+admin.site.register(UserStats)

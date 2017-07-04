@@ -3,12 +3,11 @@
 from __future__ import unicode_literals
 import os
 from .models import UserDetails
-from django.shortcuts import render,redirect, get_object_or_404
-from .forms import UserDetailsForm
+from django.shortcuts import render,redirect, get_object_or_404,render_to_response
+from .forms import UserDetailsForm,UserStats
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-
-
+from django.template import RequestContext
 
 # Create your views here.
 
@@ -42,7 +41,7 @@ def user_new(request):
 
 			if  UserDetails.objects.filter(user_name = user,user_password=pas1):
 			
-				return render(request,'login_app/login.html',{'user':request.session['username']})
+				return render(request,'login_app/home.html',{'user':request.session['username']})
 			elif UserDetails.objects.filter(user_name = user) and not(UserDetails.objects.filter(user_password=pas1)):	
 				alert = "username taken"
 				return render(request,'login_app/user.html',{'form':form,'alert':alert})	
@@ -50,6 +49,7 @@ def user_new(request):
 				UserDetails1 = form.save(commit = False)
 			        
 				UserDetails1.save()
+				
 	                	return redirect('login_app:get_user',pk=UserDetails1.pk)
 	
 
@@ -64,10 +64,33 @@ def home(request):
 	return render(request,'login_app/home.html',{'user':user})
 
 def github_login(request):
-	return render(request,'login_app/home.html',{})
+        user1 = RequestContext(request,
+                           {'user': request.user})
+	if request.user.is_authenticated():
+		user1.update({
+				'username':request.user.username
+				})
+        return render_to_response('login_app/home.html',
+        	                      context_instance=user1)
+
+#	return render(request,'login_app/home.html',{})
 
 def game(request):
 	user = request.session['username']
 	return render(request,'login_app/app.html',{'user':user})
 
-
+#def userstat(request):
+#	if request.method == 'POST':
+#		user = UserDetails.objects.get(user_name=request.session['username'])
+	
+#		form = UserStatsform(request.post)
+#		if form.is_valid():
+#			userstat = form.save(commit = False)
+			
+#			userstat.save()
+			
+def add(request):
+	stat = request.GET.get('text')
+	e = UserStats(user_stat=stat)
+	e.save()
+	return HttpResponse('done')		
