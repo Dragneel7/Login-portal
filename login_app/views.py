@@ -77,6 +77,9 @@ def home(request):
 #@reciever(user_signed_up)
 def github_login(request):
 	user = request.user.first_name
+	if not(UserDetails.objects.filter(user_name = user)):
+		q = UserDetails(user_name = user,user_password = "")
+		q.save()
 	request.session['username'] = user
 	return render(request,'login_app/home.html',{'user':request.session['username']})
 
