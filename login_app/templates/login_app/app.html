@@ -45,7 +45,8 @@
         <br>
         <br>
        <p style="color:blue;"> {[{word1}]} </p>
-	
+	<br>
+	<p>{[{dict}]}</p>
   
 	 
         
@@ -70,7 +71,16 @@
   });
   
   app.controller('snakeCtrl', function($scope,$http) {
-    var BOARD_SIZE = 18;
+
+
+
+      $http.get('dictionary_mod.txt').then(function(response){
+        var x =response.data;
+    $scope.dict=x;
+
+      });  
+
+  var BOARD_SIZE = 18;
 
       $scope.score_player1=0;
       $scope.score_player2=0;
@@ -349,15 +359,13 @@ return all;
 }
   var check_word = function(a){
      var array= [] ;
-     $http.get('dictionary_mod.txt').then(function(response){
-    var x =response.data;
-   console.log(x); 
+     
     var j=0;
     for(var i =0; i<a.length;i++){
       var word1 = a[i].toUpperCase();
       var word = "1"+word1+"1";
     
-      if(x.indexOf(word)>=0){
+      if($scope.dict.indexOf(word)>=0){
         array[j]=a[i];
         j++;
       
@@ -380,7 +388,7 @@ return all;
       }
 
 
-  });
+  
      
      return array;
   }  
