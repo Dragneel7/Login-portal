@@ -18,14 +18,6 @@ def dictionary(request):
 	txt= open(os.path.join(MYDIR,'templates/login_app/dictionary_mod.txt')).read()
 	return HttpResponse(txt)
 
-#def instruction(request):
-#	return render(request,'login_app/instruction.html',{})
-	
-#def get_user(request,pk):
-#	user = get_object_or_404(UserDetails,pk=pk)
-	
-#	return render(request,'login_app/login.html',{'user':user})
-
 
 def user_new(request):
 	
@@ -49,7 +41,7 @@ def user_new(request):
 				return render(request,'login_app/user.html',{'form':form,'alert':alert})	
 			else:			
 				UserDetails1 = form.save(commit = False)
-			       	UserDetails1.save()
+				UserDetails1.save()
 				return render(request,'login_app/home.html',{'user':request.session['username']})
 	
 
