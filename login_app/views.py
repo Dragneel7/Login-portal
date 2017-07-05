@@ -61,7 +61,7 @@ def logout(request):
 
 
 def home(request):
-        user = request.session['username']	
+	user = request.session['username']	
 	return render(request,'login_app/home.html',{'user':user})
 
 #@reciever(user_signed_up)
