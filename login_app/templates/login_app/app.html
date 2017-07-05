@@ -349,7 +349,7 @@ return all;
 }
   var check_word = function(a){
      var array= [] ;
-     $https.get('dictionary_mod.txt').then(function(response){
+     $http.get('dictionary_mod.txt').then(function(response){
     var x =response.data;
    console.log(x); 
     var j=0;
