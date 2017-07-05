@@ -29,6 +29,7 @@
             Score of <span id ="p2"> Player2</span> : {[{score_player2}]} 
             <br>
 	    <script>
+
      			// var p1 = prompt("enter the name of player1");
      			 var p2 = prompt("enter the name of player2");
     		       //  document.getElementById('p1').innerHTML = p1;
@@ -54,7 +55,7 @@
 
 </div>
     </div>
-    
+<h1>please wait while dictionary is being loaded</h1>
     
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js">
 </script>
@@ -79,6 +80,10 @@
     $scope.dict=x;
 
       });  
+	setTimeout(function(){
+        document.getElementById('gameContainer').style.display="block";
+	document.getElementById('message').style.display="none";
+      },10000);
 
   var BOARD_SIZE = 18;
 
