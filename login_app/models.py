@@ -16,5 +16,5 @@ class UserStats(models.Model):
 	userdetails = models.ForeignKey(UserDetails)
 	user_stat = models.CharField(max_length=200)
 	
-	def __unicode__(self):
+	def __str__(self):
 		return self.user_stat
