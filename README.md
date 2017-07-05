@@ -6,3 +6,4 @@ Django-based login portal:-
 portal provides login to a builtin angularJs game where each user has his or her individual score tally.
 
 Enjoy Playing !!!
+https://wordbuilding.herokuapp.com/
