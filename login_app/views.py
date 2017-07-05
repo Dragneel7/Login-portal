@@ -49,10 +49,8 @@ def user_new(request):
 				return render(request,'login_app/user.html',{'form':form,'alert':alert})	
 			else:			
 				UserDetails1 = form.save(commit = False)
-			        
-				UserDetails1.save()
-				
-	                	return render(request,'login_app/home.html',{'user':request.session['username']})
+			       	UserDetails1.save()
+				return render(request,'login_app/home.html',{'user':request.session['username']})
 	
 
 	else:
