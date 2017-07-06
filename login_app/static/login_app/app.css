@@ -1,3 +1,17 @@
+body{
+	margin:0;
+	padding:0;
+}
+div#meassage{
+	width:100vw;
+	height:100vh;
+	background-position:center;
+	background-size:cover;
+	background-repeat:no-repeat;
+	color:white;
+	text-align:center;
+
+}
 input#input{
 	display:none;
 }
