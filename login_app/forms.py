@@ -1,27 +1,18 @@
-
+from django.contrib.auth.models import User
 from django import forms
-from .models import UserDetails ,UserStats
+
 #from django.forms import formset_factory
 
-class UserDetailsForm(forms.ModelForm):
-#	user_password = forms.CharField(widget=forms.PasswordInput)
-	user_name = forms.CharField(widget=forms.TextInput(attrs = {'placeholder' : 'Username'}))
-	user_password = forms.CharField(widget=forms.PasswordInput(attrs = {'placeholder' : 'Password'}))
-	
-	class Meta:
-		model = UserDetails
-		fields = ('user_name','user_password',)
-	#	widgets = {
-	#	    'user_name':forms.TextInput(attr={'placeholder':'UserName'}),
-#		user_password = forms.CharField(widget=forms.PasswordInput)
-	
-#		widgets = {
-#			'user_password':forms.PasswordInput(),
-	#	}
+class UserForm(forms.ModelForm):
+	username = forms.CharField(widget=forms.TextInput(attrs = {'placeholder' : 'Username'}))
+	password = forms.CharField(widget=forms.PasswordInput(attrs = {'placeholder' : 'Password'}))
 
-#UserStatsFormset =formset_factory(UserDetails,UserStats,
-#	)
-#class UserStatsForm(forms.ModelForm):
-#	class Meta:
-#		model=UserStats
-#		fields = ('user_stat',)
+	class Meta:
+		model = User
+		fields = ('username','password')
+
+	def clean(self, *args, **kwargs):
+		username = self.cleaned_data['username']
+		return super(UserForm, self).clean(*args, **kwargs)
+
+	

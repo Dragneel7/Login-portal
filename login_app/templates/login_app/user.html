@@ -15,15 +15,28 @@
 <h3 id = "alert1"></h3>
 <script>document.getElementById('alert1').innerHTML ="{{alert}}";</script>
 <h2 class = "login" >
-	Login To Play
+	Signup To Play
 </h2>
 {% block content %}
 	<form method = "POST" class = "post-form">{% csrf_token %}
-		{{form.as_p}}
+		{{form_signup.as_p}}
 	
-		<button type="submit">Log In </button>
+		<button type="submit">Sign Up </button>
 	</form>
 <br>
+<div id = "login">
+<h2 class = "signin" >
+	Login To Play
+</h2>
+
+	<form method = "POST" class = "post-form" action = "login_app/login_user/">{% csrf_token %}
+		{{form_login.as_p}}
+			
+		<button type="submit">Login </button>
+	</form>
+</div>
+<br>
+
 <div id = "extra">
 <h4>or</h4>
 

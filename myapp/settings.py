@@ -75,13 +75,13 @@ TEMPLATES = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = (
+AUTHENTICATION_BACKENDS =[ 
 	'social_core.backends.facebook.FacebookOAuth2',
 	'social_core.backends.github.GithubOAuth2',
 	'social_core.backends.google.GoogleOAuth2',
 	'django.contrib.auth.backends.ModelBackend',	
 
-)
+]
 
 SOCIAL_AUTH_FACEBOOK_KEY = '313905479068863'
 SOCIAL_AUTH_FACEBOOK_SECRET ='d497cbf3343cdc031bb34bbf3726eaf5' 

@@ -1,18 +1,20 @@
 from django.contrib import admin
-from .models import UserDetails,UserStats
+
+
+from .models import *
 # Register your models here.
 
-class UserStatsInline(admin.StackedInline):
+class UserStatsInline(admin.ModelAdmin):
 	model = UserStats
 
 
-class UserDetailsAdmin(admin.ModelAdmin):
-	fieldsets = [
-	(None,           {'fields' : ['user_name']}),
-	('Password',     {'fields' : ['user_password'],'classes':['collapse']}),
-	]
+#class UserAdmin(admin.ModelAdmin):
+#	fieldsets = [
+#	(None,           {'fields' : ['username']}),
+#	('Password',     {'fields' : ['password'],'classes':['collapse']}),
+#	]
 	
-	inlines = [UserStatsInline]
+#	inlines = [UserStatsInline]
 
-admin.site.register(UserDetails,UserDetailsAdmin)
-#admin.site.register(UserStats)
+#admin.site.register(UserAdmin)
+admin.site.register(UserStats)

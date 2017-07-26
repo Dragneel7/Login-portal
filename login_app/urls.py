@@ -14,4 +14,5 @@ urlpatterns = [
 	url(r'^accounts/profile/$',views.github_login,name='github_login'),
 	url(r'^stats/$',views.stats, name='stats'),
 	url(r'^$',views.logout, name='logout'),
+	url(r'^login_app/login_user/$',views.login_user,name='login'),
 ]

@@ -2,13 +2,15 @@
 
 from __future__ import unicode_literals
 import os
-from .models import UserDetails
+from .models import UserStats
+from django.contrib.auth import authenticate, login,logout
 from django.shortcuts import render,redirect, get_object_or_404,render_to_response
-from .forms import UserDetailsForm,UserStats
+from .forms import *
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.contrib import auth
+from django.contrib.auth.forms import AuthenticationForm
 #from allauth.account.signals import user_signed_up
 #from django.dispatch import reciever
 # Create your views here.
@@ -21,71 +23,82 @@ def dictionary(request):
 
 def user_new(request):
 	
-	if request.method == "POST":
-		form = UserDetailsForm(request.POST)
-	#	user = UserDetails.objects.get(user_name = form.user_name):
-	#	if user.count()>0:
-	#		return render(request,'login_app/user.html',{'form':form})
-	
-		
-		if form.is_valid():
-			user = form.cleaned_data.get('user_name')
-			pas1 = form.cleaned_data.get('user_password') 
-			request.session['username'] = user
-
-			if  UserDetails.objects.filter(user_name = user,user_password=pas1):
-			
-				return render(request,'login_app/home.html',{'user':request.session['username']})
-			elif UserDetails.objects.filter(user_name = user) and not(UserDetails.objects.filter(user_password=pas1)):	
-				alert = "username taken"
-				return render(request,'login_app/user.html',{'form':form,'alert':alert})	
-			else:			
-				UserDetails1 = form.save(commit = False)
-				UserDetails1.save()
-				return render(request,'login_app/home.html',{'user':request.session['username']})
-	
+	if request.method == 'POST':
+		form = UserForm(request.POST)
+		print form.is_valid
+		print form.errors
+		if form.is_valid:
+			username = form.cleaned_data.get('username')
+			password = form.cleaned_data.get('password')	
+			user = User.objects.create(username = username)
+			user.set_password(password)
+			user.save()
+			user = authenticate(username = username, password = password)
+			login(request,user)
+			return render(request,'login_app/home.html',{'user':request.user.username})	
 
 	else:
-		form = UserDetailsForm()
+		form = UserForm()
 	
-		return render(request,'login_app/user.html',{'form':form})
+		return render(request,'login_app/user.html',{'form_signup':form,'form_login':form})
 
+def login_user(request):
+	if request.method == 'POST':
+		form = AuthenticationForm(request,request.POST)
+		print form
+		print "hello"
+		if form.is_valid:
+			#print form.cleaned_data
+			#username = form.cleaned_data.get('username')
+			#print username		
+			#password = form.cleaned_data.get('password')
+		 	#print password
+			#user = User.objects.get(username = username)
+			#password = user.set_password(user.password)
+			#user = authenticate(username = username , password = password)
+		
+			login(request,form.get_user())
+			return render(request,'login_app/home.html',{'user':request.user.username})
+
+	else:
+		form = UserForm()
+		print form 	
+		return render(request,'login_app/user.html',{'form_login':form})
 
 @login_required
 
 def logout(request):
-	auth.logout(request)
+	logout(request)
 
 	return render(request,'login_app/user.html',{})
 
 
 
 def home(request):
-	user = request.session['username']	
-	return render(request,'login_app/home.html',{'user':user})
+#	user = request.session['username']	
+	return render(request,'login_app/home.html',{'user':request.user.username})
 
 #@reciever(user_signed_up)
 def github_login(request):
 	user = request.user.first_name
-	if not(UserDetails.objects.filter(user_name = user)):
+	if not(User.objects.filter(user_name = user)):
 		q = UserDetails(user_name = user,user_password = "")
 		q.save()
 	request.session['username'] = user
 	return render(request,'login_app/home.html',{'user':request.session['username']})
 
 def game(request):
-	user = request.session['username']
-	return render(request,'login_app/app.html',{'user':user})
+	return render(request,'login_app/app.html',{'user':request.user.username})
 
 		
 def add(request):
 	stat = request.GET.get('text')
-	q = UserDetails.objects.get(user_name = request.session['username'])
+	q = User.objects.get(username = request.user.username)
 	q.userstats_set.create(user_stat=stat)
 	return HttpResponse('done')	
 
 def stats(request):
-	q = UserDetails.objects.get(user_name = request.session['username'])
+	q = User.objects.get(username = request.user.username)
 	stats = q.userstats_set.all().order_by('-id')
 	return render(request,'login_app/stats.html',{'stats':stats})
 

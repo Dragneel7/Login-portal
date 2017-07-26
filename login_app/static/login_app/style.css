@@ -11,7 +11,7 @@ h1.heading{
 }
 
 form.post-form{
-	margin-left:40%;
+	margin-left:30%;
 	position:absolute;
 	top:300px;
 	font-weight:bolder;
@@ -20,7 +20,7 @@ form.post-form{
 h2.login{
 	position:absolute;
 	top:200px;
-	left:40%;
+	left:30%;
 }
 a{
 	text-decoration:none;
@@ -34,4 +34,12 @@ div#extra{
 h3{
 	margin-left:40%;
 	font-size:40px;
+}
+#login{
+	margin-left:25%;
+}
+h2.signin{
+	position:absolute;
+	top:200px;
+	left:800px;
 }	
