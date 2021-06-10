@@ -1,6 +1,6 @@
 certifi==2017.4.17
 chardet==3.0.4
-Django==1.8
+Django==2.2.24
 django-angular==0.8.4
 djangorestframework==3.6.3
 idna==2.5
